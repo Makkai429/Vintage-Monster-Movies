@@ -31,5 +31,3 @@ Secured via Admin role
 # Data
 SQLite database for persistence.
 
-SQLite database for persistence.
-
