@@ -1,0 +1,48 @@
+﻿@page
+@model VintageMonsterMovies.Pages.RegisterModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+<h1>Registration</h1>
+<form method="post">
+    <div>
+        <label asp-for="user.username">Username</label>
+        <input asp-for="user.username" />
+        <span asp-validation-for="user.username" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="user.email">Email</label>
+        <input asp-for="user.email" />
+        <span asp-validation-for="user.email" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="user.password">Password</label>
+        <input asp-for="user.password" type="password" />
+        <span asp-validation-for="user.password" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="repeatedPassword">Password</label>
+        <input asp-for="repeatedPassword" type="password" />
+        <span asp-validation-for="repeatedPassword" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Register</button>
+    <a asp-page="Login" class="horror-link">Login</a>
+</form>
+
+@if (Model.sent)
+{
+    <div class="mt-3">
+        @if (Model.successful)
+        {
+            <div class="alert alert-success">Successful registration!</div>
+        }
+        else
+        {
+            <div class="alert alert-danger">Registration failed.</div>
+        }
+    </div>
+}

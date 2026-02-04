@@ -1,0 +1,80 @@
+﻿@page
+@model VintageMonsterMovies.Pages.CreateDetailsModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+
+<h1>Details</h1>
+<form method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="detail.movieId" class="form-label">Film</label>
+        <select asp-for="detail.movieId"
+                asp-items="Model.MovieOptions"
+                class="form-select">
+            <option value="">-- Movies --</option>
+        </select>
+        <span asp-validation-for="detail.movieId" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.stars">Stars</label>
+        <input asp-for="detail.stars" />
+        <span asp-validation-for="detail.stars" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.runtime">Runtime</label>
+        <input asp-for="detail.runtime" />
+        <span asp-validation-for="detail.runtime" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.company">Company</label>
+        <input asp-for="detail.company" />
+        <span asp-validation-for="detail.company" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.storyline">Storyline</label>
+        <textarea asp-for="detail.storyline"></textarea>
+        <span asp-validation-for="detail.storyline" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+
+<a asp-page="AdminPage" class="btn btn-primary btn-sm me-2">Back</a>
+
+<h3>Movies with already added details</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publishing Year</th>
+            <th>Writer</th>
+            <th>Director</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.moviesWithDetails)
+        {
+            <tr>
+                <td>@m.title</td>
+                <td>@m.publishingYear</td>
+                <td>@m.writer</td>
+                <td>@m.director</td>
+                <td>
+                    <a asp-page="EditDetails" asp-route-id="@m.id" class="text-danger">Edit</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

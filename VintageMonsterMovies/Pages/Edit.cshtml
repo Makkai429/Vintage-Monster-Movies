@@ -1,0 +1,43 @@
+﻿@page "{id:int}"
+@model VintageMonsterMovies.Pages.EditModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+
+<a asp-page="AdminPage" class="horror-link">Back</a>
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="movie.id" />
+
+    <div>
+        <label asp-for="movie.title">Title</label>
+        <input asp-for="movie.title" />
+        <span asp-validation-for="movie.title" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="movie.publishingYear">Publishing Year</label>
+        <input asp-for="movie.publishingYear" />
+        <span asp-validation-for="movie.publishingYear" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="movie.description">Description</label>
+        <textarea asp-for="movie.description"></textarea>
+        <span asp-validation-for="movie.description" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="movie.writer">Writer</label>
+        <input asp-for="movie.writer" />
+        <span asp-validation-for="movie.writer" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="movie.director">Director</label>
+        <input asp-for="movie.director" />
+        <span asp-validation-for="movie.director" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Save</button>
+</form>

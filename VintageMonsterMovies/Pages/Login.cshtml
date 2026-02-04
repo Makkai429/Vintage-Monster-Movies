@@ -1,0 +1,24 @@
+﻿@page
+@model VintageMonsterMovies.Pages.LoginModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+
+<h1>Login</h1>
+
+<form method="post" asp-page-handler="Login">
+    <div>
+        <label asp-for="username">Username</label>
+        <input type="text" asp-for="username" />
+        <span asp-validation-for="username" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="password">Password</label>
+        <input asp-for="password" type="password" />
+        <span asp-validation-for="password" class="text-danger"></span>
+    </div>
+    <button type="submit">Login</button>
+    <a asp-page="Register" class="horror-link">Register</a>
+</form>
+

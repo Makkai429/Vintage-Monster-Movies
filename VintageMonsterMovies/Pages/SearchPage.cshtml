@@ -1,0 +1,58 @@
+﻿@page
+@model VintageMonsterMovies.Pages.SearchPageModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+<h3>Search for Movie titles</h3>
+<form method="post" asp-page-handler="Search" class="mb-3">
+    <input type="text" name="typedMovie"
+           value="@Model.wantedMovie"
+           class="form-control"
+           placeholder="Movie tile" />
+    <button type="submit" class="btn btn-primary mt-2">Search</button>
+</form>
+
+@if (!string.IsNullOrWhiteSpace(Model.wantedMovie))
+{
+    <h4>Search results: @Model.wantedMovie</h4>
+
+    @if (Model.results == null || Model.results.Count == 0)
+    {
+        <p>No results.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Publishing Year</th>
+                    <th>Writer</th>
+                    <th>Director</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var m in Model.results)
+                {
+                    <tr>
+                        <td>@m.title</td>
+                        <td>@m.publishingYear</td>
+                        <td>@m.writer</td>
+                        <td>@m.director</td>
+                    </tr>
+
+                    @if (!string.IsNullOrWhiteSpace(m.description))
+                    {
+                        <tr>
+                            <td colspan="4"
+                                class="text-muted"
+                                style="white-space: pre-line;">
+                                @m.description
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}

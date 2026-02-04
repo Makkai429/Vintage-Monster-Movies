@@ -1,0 +1,33 @@
+﻿@page
+@model VintageMonsterMovies.Pages.DetailsModel
+@{
+
+    bool hasDetails =
+            Model?.detail != null && (
+                !string.IsNullOrWhiteSpace(Model.detail.storyline) ||
+                !string.IsNullOrWhiteSpace(Model.detail.stars) ||
+                !string.IsNullOrWhiteSpace(Model.detail.company) ||
+                Model.detail.runtime>0
+            );
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+
+@if (hasDetails)
+{
+<h1>@Model.movie.title</h1>
+
+<p>@Model.detail.storyline</p>
+
+<p>Stars: @Model.detail.stars</p>
+
+<p>Writer: @Model.movie.writer - Director: @Model.movie.director</p>
+
+<p>Company: @Model.detail.company - Release date: @Model.movie.publishingYear - Runtime: @Model.detail.runtime</p>
+}
+else
+{
+	<div class="text-muted">There are no details added yet.</div>
+}
+
+<a asp-page="UserPage" class="horror-link">Back</a>
+

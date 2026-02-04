@@ -1,0 +1,44 @@
+﻿@page "{id:int}"
+@model VintageMonsterMovies.Pages.EditDetailsModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+
+<h1>Edit existing details</h1>
+<form method="post">
+
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="detail.movieId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <p class="fw-bold">Film: @Model.movieTitle</p>
+
+    <div>
+        <label asp-for="detail.stars">Stars</label>
+        <input asp-for="detail.stars" />
+        <span asp-validation-for="detail.stars" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.runtime">Runtime</label>
+        <input asp-for="detail.runtime" />
+        <span asp-validation-for="detail.runtime" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.company">Company</label>
+        <input asp-for="detail.company" />
+        <span asp-validation-for="detail.company" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="detail.storyline">Storyline</label>
+        <textarea asp-for="detail.storyline"></textarea>
+        <span asp-validation-for="detail.storyline" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+
+<a asp-page="CreateDetails" class="horror-link">Back</a>

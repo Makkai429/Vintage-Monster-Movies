@@ -1,0 +1,41 @@
+﻿@page
+@model VintageMonsterMovies.Pages.UserPageModel
+@{
+}
+<link rel="stylesheet" href="~/css/horror.css" asp-append-version="true" />
+
+<h1>Classic Horror Movies</h1>
+
+<h4>Movies</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publishing Year</th>
+            <th>Writer</th>
+            <th>Director</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.movieList)
+        {
+            <tr>
+                <td><a asp-page="Details" asp-route-id="@m.id">@m.title</a></td>
+                <td>@m.publishingYear</td>
+                <td>@m.writer</td>
+                <td>@m.director</td>
+            </tr>
+
+            @if (!string.IsNullOrWhiteSpace(m.description))
+            {
+                <tr>
+                    <td colspan="4" class="text-muted" style="white-space: pre-line;">
+                        @m.description
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<a asp-page="Login" class="horror-link">Back</a>
